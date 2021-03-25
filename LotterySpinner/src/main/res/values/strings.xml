@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Lottery Spinner</string>
+    <string name="generateNumbers">Generate</string>
+    <string-array name="lottery_type">
+        <item>Swiss Lottery</item>
+        <item>Euro Millions</item>
+    </string-array>
+</resources>

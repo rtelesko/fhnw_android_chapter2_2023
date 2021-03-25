@@ -1,0 +1,8 @@
+include ':LotterySpinner'
+include ':LotteryOneTip'
+include ':LotteryButtonTwo'
+include ':LotteryButtonThree'
+include ':LotteryButtonOne'
+include ':BeerAdviser'
+include ':app'
+rootProject.name = "Chapter2"
