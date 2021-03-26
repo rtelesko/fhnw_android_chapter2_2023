@@ -1,3 +1,4 @@
+include ':LotteryButtonName'
 include ':LotterySpinner'
 include ':LotteryOneTip'
 include ':LotteryButtonTwo'

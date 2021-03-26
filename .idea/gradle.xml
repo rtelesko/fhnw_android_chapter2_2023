@@ -12,6 +12,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/BeerAdviser" />
+            <option value="$PROJECT_DIR$/LotteryButtonName" />
             <option value="$PROJECT_DIR$/LotteryButtonOne" />
             <option value="$PROJECT_DIR$/LotteryButtonThree" />
             <option value="$PROJECT_DIR$/LotteryButtonTwo" />
