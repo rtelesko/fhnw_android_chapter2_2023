@@ -15,6 +15,9 @@ public class MainActivity extends AppCompatActivity {
     // Constants for tip systems
     static final int EUROMILLIONS_NUMBERS = 5;
     static final int SWISSLOTTERY_NUMBERS = 6;
+    static final int SWISSLOTTERY_NUMBER_LIMIT = 42;
+    static final int EUROMILLIONS_NUMBER_LIMIT = 50;
+
     // GUI controls
     private TextView tvResult;
     private TextView tvValidation;
@@ -50,32 +53,40 @@ public class MainActivity extends AppCompatActivity {
         if (count == SWISSLOTTERY_NUMBERS) {
             int[] numbersSwiss = new int[SWISSLOTTERY_NUMBERS];
             for (int i = 0; i < SWISSLOTTERY_NUMBERS; i++) {
-                numbersSwiss[i] = random.nextInt(42) + 1;
+                numbersSwiss[i] = random.nextInt(SWISSLOTTERY_NUMBER_LIMIT) + 1;
                 tvResult.append(numbersSwiss[i] + "  ");
             }
             // Check for duplicates in Swiss Lottery array
-            if (validationCheck(numbersSwiss)) {
-                tvValidation.setTextColor(new Color().parseColor("#008000"));
-                tvValidation.setText("Validation OK");
+            if (validationCheck(numbersSwiss)){
+                setValidationTextField(true);
             } else {
-                tvValidation.setTextColor(new Color().parseColor("#FF0000"));
-                tvValidation.setText("Validation NOT OK - Please make a new try!");
+                setValidationTextField(false);
             }
 
         } else {
             int[] numbersEuro = new int[EUROMILLIONS_NUMBERS];
             for (int i = 0; i < EUROMILLIONS_NUMBERS; i++) {
-                numbersEuro[i] = random.nextInt(50) + 1;
+                numbersEuro[i] = random.nextInt(EUROMILLIONS_NUMBER_LIMIT) + 1;
                 tvResult.append(numbersEuro[i] + "  ");
             }
             // Check for duplicates in EuroMillions Lottery array
             if (validationCheck(numbersEuro)) {
-                tvValidation.setTextColor(new Color().parseColor("#008000"));
-                tvValidation.setText("Validation OK");
+                setValidationTextField(true);
             } else {
-                tvValidation.setTextColor(new Color().parseColor("#FF0000"));
-                tvValidation.setText("Validation NOT OK - Please make a new try!");
+                setValidationTextField(false);
             }
+        }
+    }
+
+    private void setValidationTextField(boolean validated){
+        if (validated){
+            //tvValidation.setTextColor(new Color().GREEN);
+            tvValidation.setTextColor(new Color().parseColor("#008000"));
+            tvValidation.setText("Validation OK");
+        } else {
+            //tvValidation.setTextColor(new Color().RED);
+            tvValidation.setTextColor(new Color().parseColor("#FF0000"));
+            tvValidation.setText("Validation NOT OK - Please make a new try!");
         }
 
     }
