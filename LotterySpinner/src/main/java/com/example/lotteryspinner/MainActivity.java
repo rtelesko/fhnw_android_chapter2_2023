@@ -2,6 +2,7 @@ package com.example.lotteryspinner;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Random;
+import java.util.stream.IntStream;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -51,19 +53,33 @@ public class MainActivity extends AppCompatActivity {
         Random random = new Random();
 
         if (count == SWISSLOTTERY_NUMBERS) {
+
+            // stream version - creates unique values, sorts them and puts each value on the textfield
+            // no validation required since the stream always returns unique values
+            new Random().ints(SWISSLOTTERY_NUMBERS, 1, SWISSLOTTERY_NUMBER_LIMIT).distinct().sorted().forEach(val -> tvResult.append(" " + val));
+
+            // conventional array version
+            /*
             int[] numbersSwiss = new int[SWISSLOTTERY_NUMBERS];
+
             for (int i = 0; i < SWISSLOTTERY_NUMBERS; i++) {
                 numbersSwiss[i] = random.nextInt(SWISSLOTTERY_NUMBER_LIMIT) + 1;
                 tvResult.append(numbersSwiss[i] + "  ");
             }
-            // Check for duplicates in Swiss Lottery array
+             Check for duplicates in Swiss Lottery array
             if (validationCheck(numbersSwiss)){
                 setValidationTextField(true);
             } else {
                 setValidationTextField(false);
             }
+            */
 
         } else {
+
+            // same same but different
+            new Random().ints(EUROMILLIONS_NUMBERS, 1, EUROMILLIONS_NUMBER_LIMIT).distinct().sorted().forEach(val -> tvResult.append(" " + val));
+
+            /*
             int[] numbersEuro = new int[EUROMILLIONS_NUMBERS];
             for (int i = 0; i < EUROMILLIONS_NUMBERS; i++) {
                 numbersEuro[i] = random.nextInt(EUROMILLIONS_NUMBER_LIMIT) + 1;
@@ -75,6 +91,7 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 setValidationTextField(false);
             }
+             */
         }
     }
 
