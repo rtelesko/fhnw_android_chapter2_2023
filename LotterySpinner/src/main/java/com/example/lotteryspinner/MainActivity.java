@@ -25,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
     private TextView tvValidation;
     private Spinner spType;
 
+    private boolean useStreams = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,44 +56,43 @@ public class MainActivity extends AppCompatActivity {
 
         if (count == SWISSLOTTERY_NUMBERS) {
 
-            // stream version - creates unique values, sorts them and puts each value on the textfield
-            // no validation required since the stream always returns unique values
-            new Random().ints(SWISSLOTTERY_NUMBERS, 1, SWISSLOTTERY_NUMBER_LIMIT).distinct().sorted().forEach(val -> tvResult.append(" " + val));
-
-            // conventional array version
-            /*
-            int[] numbersSwiss = new int[SWISSLOTTERY_NUMBERS];
-
-            for (int i = 0; i < SWISSLOTTERY_NUMBERS; i++) {
-                numbersSwiss[i] = random.nextInt(SWISSLOTTERY_NUMBER_LIMIT) + 1;
-                tvResult.append(numbersSwiss[i] + "  ");
-            }
-             Check for duplicates in Swiss Lottery array
-            if (validationCheck(numbersSwiss)){
-                setValidationTextField(true);
+            if (useStreams) {
+                // stream version - creates unique values, sorts them and puts each value on the textfield
+                // no validation required since the stream always returns unique values
+                new Random().ints(SWISSLOTTERY_NUMBERS, 1, SWISSLOTTERY_NUMBER_LIMIT).distinct().sorted().forEach(val -> tvResult.append(" " + val));
             } else {
-                setValidationTextField(false);
+                // conventional array version
+                int[] numbersSwiss = new int[SWISSLOTTERY_NUMBERS];
+                for (int i = 0; i < SWISSLOTTERY_NUMBERS; i++) {
+                    numbersSwiss[i] = random.nextInt(SWISSLOTTERY_NUMBER_LIMIT) + 1;
+                    tvResult.append(numbersSwiss[i] + "  ");
+                }
+                // Check for duplicates in Swiss Lottery array
+                if (validationCheck(numbersSwiss)) {
+                    setValidationTextField(true);
+                } else {
+                    setValidationTextField(false);
+                }
             }
-            */
 
         } else {
 
-            // same same but different
-            new Random().ints(EUROMILLIONS_NUMBERS, 1, EUROMILLIONS_NUMBER_LIMIT).distinct().sorted().forEach(val -> tvResult.append(" " + val));
-
-            /*
-            int[] numbersEuro = new int[EUROMILLIONS_NUMBERS];
-            for (int i = 0; i < EUROMILLIONS_NUMBERS; i++) {
-                numbersEuro[i] = random.nextInt(EUROMILLIONS_NUMBER_LIMIT) + 1;
-                tvResult.append(numbersEuro[i] + "  ");
-            }
-            // Check for duplicates in EuroMillions Lottery array
-            if (validationCheck(numbersEuro)) {
-                setValidationTextField(true);
+            if (useStreams) {
+                // same same but with euromillions
+                new Random().ints(EUROMILLIONS_NUMBERS, 1, EUROMILLIONS_NUMBER_LIMIT).distinct().sorted().forEach(val -> tvResult.append(" " + val));
             } else {
-                setValidationTextField(false);
+                int[] numbersEuro = new int[EUROMILLIONS_NUMBERS];
+                for (int i = 0; i < EUROMILLIONS_NUMBERS; i++) {
+                    numbersEuro[i] = random.nextInt(EUROMILLIONS_NUMBER_LIMIT) + 1;
+                    tvResult.append(numbersEuro[i] + "  ");
+                }
+                // Check for duplicates in EuroMillions Lottery array
+                if (validationCheck(numbersEuro)) {
+                    setValidationTextField(true);
+                } else {
+                    setValidationTextField(false);
+                }
             }
-             */
         }
     }
 
