@@ -1,1 +1,1 @@
-"Beer Adviser" taken from Head First Android Development von Dawn Griffiths (2017)
+"BeerAdviser" taken from Head First Android Development von Dawn Griffiths (2017)
