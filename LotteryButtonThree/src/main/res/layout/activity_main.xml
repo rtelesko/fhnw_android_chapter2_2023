@@ -15,13 +15,13 @@
         android:layout_marginTop="16dp"
         android:text="@string/buttonText"/>
 
-    <Button
+    <ImageButton
         android:id="@+id/btGenerateTextTwo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="16dp"
-        android:text="@string/buttonText"/>
+        android:src="@drawable/icon_lottery"/>
 
     <TextView
         android:id="@+id/tvText"

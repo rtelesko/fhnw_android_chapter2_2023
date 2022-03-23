@@ -3,6 +3,7 @@ package com.example.lotterybuttonthree;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,7 +12,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     // GUI controls
     private TextView tvText;
-    private Button btGenerateText, btGenerateTextTwo;
+    private Button btGenerateText;
+    private ImageButton btGenerateTextTwo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
